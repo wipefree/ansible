@@ -9,7 +9,7 @@
       name: nginx
       state: stopped
 
-  - name: remove nginx
+  - name: do remove nginx
     atp:
       name: nginx
       state: absent
