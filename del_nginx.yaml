@@ -1,0 +1,15 @@
+---
+- name: uninstall nginx
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: stop nginx service
+    service:
+      name: nginx
+      state: stopped
+
+  - name: remove nginx
+    atp:
+      name: nginx
+      state: absent
