@@ -18,4 +18,5 @@
     shell: |
       apt-get remove -y --purge nginx*
       apt-get autoremove -y
+    # with module shell remove nginx service =OK
 ...
