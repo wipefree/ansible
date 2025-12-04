@@ -13,3 +13,4 @@
     atp:
       name: nginx
       state: absent
+...
