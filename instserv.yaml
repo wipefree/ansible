@@ -24,10 +24,8 @@
         state: present
 
     - name: get project from Git
-      #shell: # this command not worked! try module 'git'
-      #  git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /tmp
       ansible.builtin.git:
-        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
         clone: yes
         update: no
