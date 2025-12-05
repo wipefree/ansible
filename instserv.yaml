@@ -16,16 +16,10 @@
           - maven
         state: present
 
-    - name: control of existing pom.xml
-      stat:
-        path: /tmp/boxfuse-sample-java-war-hello/pom.xml
-      register: pom
-
     - name: clone project from Git
       git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
-      when: not pom.stat.exists # run clone repo if pom.xml not exist
 
     - name: control of existing hello-1.0.war
       stat:
