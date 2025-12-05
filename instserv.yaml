@@ -8,30 +8,23 @@
       apt:
         update_cache: yes
 
-    - name: install Java
+    - name: install needed software
       apt:
-        name: default-jdk
+        name:
+          - default-jdk
+          - git
+          - maven
         state: present
 
-    - name: install Git
-      apt:
-        name: git
-        state: present
+#    - name: get project from Git
+#      ansible.builtin.git:
+#        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+#        dest: /tmp/boxfuse-sample-java-war-hello
+#        clone: yes
+#        update: no
 
-    - name: install Maven
-      apt:
-        name: maven
-        state: present
-
-    - name: get project from Git
-      ansible.builtin.git:
-        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
-        dest: /tmp/boxfuse-sample-java-war-hello
-        clone: yes
-        update: no
-
-    - name: building project -> WAR
-      ansible.builtin.command: mvn package -DskipTests
-      args:
-        chdir: /tmp/boxfuse-sample-java-war-hello
+#    - name: building project -> WAR
+#      ansible.builtin.command: mvn package -DskipTests
+#      args:
+#        chdir: /tmp/boxfuse-sample-java-war-hello
 ...
