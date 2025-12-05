@@ -23,7 +23,7 @@
       git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
-      when: not pom.stat.exist # run clone repo if pom.xml not exist
+      when: not pom.stat.exists # run clone repo if pom.xml not exist
 
     - name: building project -> WAR
       stat: # control of existing hello-1.0.war
@@ -32,5 +32,5 @@
       ansible.builtin.command: mvn package -DskipTests
       args:
         chdir: /tmp/boxfuse-sample-java-war-hello
-      when: not war.stat.exist # run build project if hello-1.0.war not exist
+      when: not war.stat.exists # run build project if hello-1.0.war not exist
 ...
