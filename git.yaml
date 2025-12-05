@@ -1,0 +1,22 @@
+---
+- name: get project from Git
+  hosts: maven
+  become: yes
+
+  tasks:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+
+    - name: install Git
+      apt:
+        name: git
+        state: present
+
+    - name: clone project from Git
+      ansible.builtin.git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /tmp/boxfuse-sample-java-war-hello
+        clone: yes
+        update: no
+...
