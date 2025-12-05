@@ -13,6 +13,11 @@
         name: default-jdk
         state: present
 
+    - name: install Git
+      apt:
+        name: git
+        state: present
+
     - name: install Maven
       apt:
         name: maven
