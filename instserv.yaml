@@ -13,10 +13,10 @@
     - name: install Java
       apt:
         name: default-jdk
-        status: present
+        state: present
 
     - name: install Maven
       apt:
         name: maven
-        status: present
+        state: present
 ...
