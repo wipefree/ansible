@@ -22,7 +22,7 @@
       shell:
         git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /tmp
 
-    - name: build WAR
+    - name: building project -> WAR
       ansible.builtin.command: mvn package -DskipTests
       args:
         chdir: /tmp/boxfuse-sample-java-war-hello
