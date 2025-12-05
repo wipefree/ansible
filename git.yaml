@@ -17,5 +17,4 @@
       git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
-        state: present
 ...
