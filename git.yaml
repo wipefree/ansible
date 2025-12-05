@@ -14,9 +14,8 @@
         state: present
 
     - name: clone project from Git
-      ansible.builtin.git:
+      git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
-        clone: yes
-        update: no
+        state: present
 ...
