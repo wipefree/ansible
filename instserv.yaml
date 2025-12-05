@@ -24,7 +24,7 @@
       ansible.builtin.git:
         repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
         dest: /tmp/boxfuse-sample-java-war-hello
-        clone: true
+        clone: yes
         update: no
 
     - name: building project -> WAR
