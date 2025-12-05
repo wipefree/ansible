@@ -22,7 +22,7 @@
         dest: /tmp/boxfuse-sample-java-war-hello
 
     - name: control of existing hello-1.0.war
-      stat:
+      ansible.builtin.stat:
         path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
       register: war
 
