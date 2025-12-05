@@ -23,6 +23,7 @@
         clone: yes
         update: no
 
+
 #    - name: building project -> WAR
 #      ansible.builtin.command: mvn package -DskipTests
 #      args:
