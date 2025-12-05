@@ -1,0 +1,22 @@
+---
+# creating an environment and installing software
+
+- name: creating building environment
+  hosts: maven
+  become: yes
+
+  tasks:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+
+    - name: install Java
+      apt:
+        name: default-jdk
+        status: present
+
+    - name: install Maven
+      apt:
+        name: maven
+        status: present
+...
