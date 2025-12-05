@@ -16,7 +16,7 @@
           - maven
         state: present
 
-    - name: get project from Git
+    - name: why dont work?! ....
       ansible.builtin.git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
