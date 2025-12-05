@@ -1,7 +1,5 @@
 ---
-# creating an environment and installing software
-
-- name: creating building environment
+- name: creating an environment, installing software and build project
   hosts: maven
   become: yes
 
@@ -19,4 +17,13 @@
       apt:
         name: maven
         state: present
+
+    - name: get project
+      shell:
+        git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /tmp
+
+    - name: build WAR
+      ansible.builtin.command: mvn package -DskipTests
+      args:
+        chdir: /tmp/boxfuse-sample-java-war-hello
 ...
