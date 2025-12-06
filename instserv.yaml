@@ -34,10 +34,6 @@
         - /tmp/boxfuse-sample-java-war-hello/pom.xml
         - /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
       register: war
-      debug:
-        msg: |
-          pom.xml exists: {{ war.results[0].stat.exists }}
-          hello-1.0.war exists: {{ war.results[1].stat.exists }}
 
     - name: building project WAR
       command: ls -la #mvn package -DskipTests
