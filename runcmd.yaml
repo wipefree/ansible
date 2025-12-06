@@ -5,6 +5,5 @@
 
   tasks:
     - name: run cmd
-      ansible.builtin.command:
-        cmd: ls -latr
+      command: ls -latr
 ...
