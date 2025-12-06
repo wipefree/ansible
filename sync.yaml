@@ -1,27 +1,33 @@
 ---
-#- name: synchronize project file slave1 -> master
-#  hosts: maven
-#  become: yes
-#
-#  tasks:
-#    - name: copy project to master node
-#      synchronize:
-#        src: '/tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war'
-#        dest: '/tmp'
-#        mode: pull
+- name: synchronize project file slave1 -> master
+  hosts: maven
+  become: yes
+
+  tasks:
+    - name: control of existing hello-1.0.war on slave1-node
+      stat:
+        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      register: war
+
+    - name: copy project to master node
+      synchronize:
+        src: '/tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war'
+        dest: '/tmp'
+        mode: pull
+      when: war.stat.exists
 
 - name: synchronize project file master -> slave2
   hosts: tomcat
   become: yes
 
   tasks:
-    - name: control of existing hello-1.0.war
+    - name: control of existing hello-1.0.war on local directory
       stat:
         path: /tmp/hello-1.0.war
       register: war
       delegate_to: localhost
 
-    - name: copy project file from master to slave2
+    - name: copy project file from master to slave2 if file exists
       synchronize:
         src: '/tmp/hello-1.0.war'
         dest: '/var/lib/tomcat9/webapps/'

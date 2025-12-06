@@ -52,7 +52,7 @@
         path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
       register: war
 
-    - name: if hello-1.0.war is exists, then copy it => docker registry
+    - name: if hello-1.0.war is exists, it can be deploy
       debug:
         msg:
           - "*************************"

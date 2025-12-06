@@ -1,0 +1,8 @@
+---
+- name: building project
+  import_playbook: build_project.yaml
+- name: install web-server
+  import_playbook: web_prod.yaml
+- name: deploy project
+  import_playbook: sync.yaml
+...

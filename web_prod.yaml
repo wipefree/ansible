@@ -15,7 +15,7 @@
           - tomcat9
         state: present
 
-    - name: Enshure tomcat service is started
+    - name: ensure tomcat service is started
       service:
         name: tomcat9
         state: started
