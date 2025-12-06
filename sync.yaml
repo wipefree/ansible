@@ -21,7 +21,7 @@
   become: yes
 
   tasks:
-    - name: control of existing hello-1.0.war on local directory
+    - name: control of existing hello-1.0.war in local directory
       stat:
         path: /tmp/hello-1.0.war
       register: war
