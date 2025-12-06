@@ -1,10 +1,6 @@
 ---
-- name: try run command
-  hosts: maven
+- hosts: maven
   become: yes
-
-  tasks:  # <- Правильный отступ (2 пробела от начала строки)
-    - name: run cmd
-      ansible.builtin.command:
-        cmd: ls -latr
+  tasks:
+    - command: ls -latr
 ...
