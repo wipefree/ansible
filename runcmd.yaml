@@ -6,6 +6,6 @@
   tasks:
     - name: run cmd
       ansible.builtin.command: ls -latr
-      args:
-        chdir: /tmp/boxfuse-sample-java-war-hello
+#      args:
+#        chdir: /tmp/boxfuse-sample-java-war-hello
 ...
