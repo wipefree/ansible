@@ -1,14 +1,14 @@
 ---
-- name: synchronize project file slave1 -> master
-  hosts: maven
-  become: yes
-
-  tasks:
-    - name: copy project to master node
-      synchronize:
-        src: '/tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war'
-        dest: '/tmp'
-        mode: pull
+#- name: synchronize project file slave1 -> master
+#  hosts: maven
+#  become: yes
+#
+#  tasks:
+#    - name: copy project to master node
+#      synchronize:
+#        src: '/tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war'
+#        dest: '/tmp'
+#        mode: pull
 
 - name: synchronize project file master -> slave2
   hosts: tomcat
