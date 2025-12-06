@@ -1,5 +1,5 @@
 ---
-- name: synchronize project file slave1 -> master -> slave2
+- name: synchronize project file slave1 -> master
   hosts: maven
   become: yes
 
@@ -9,4 +9,23 @@
         src: '/tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war'
         dest: '/tmp'
         mode: pull
+
+- name: synchronize project file master -> slave2
+  hosts: tomcat
+  become: yes
+
+  tasks:
+    - name: control of existing hello-1.0.war
+      stat:
+        path: /tmp/hello-1.0.war
+      register: war
+      delegate_to: localhost
+
+    - name: copy project file from master to slave2
+      synchronize:
+        src: '/tmp/hello-1.0.war'
+        dest: '/var/lib/tomcat9/webapps/'
+        mode: push
+      delegate_to: localhost
+      when: war.stat.exists
 ...
