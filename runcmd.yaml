@@ -3,10 +3,8 @@
   hosts: maven
   become: yes
 
-  tasks:
+  tasks:  # <- Правильный отступ (2 пробела от начала строки)
     - name: run cmd
       ansible.builtin.command:
         cmd: ls -latr
-#      args:
-#        chdir: /tmp/boxfuse-sample-java-war-hello
 ...
