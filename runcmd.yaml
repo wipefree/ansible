@@ -1,0 +1,11 @@
+---
+- name: try run command
+  hosts: maven
+  become: yes
+
+  tasks:
+    - name: run cmd
+      ansible.builtin.command: ls -latr
+      args:
+        chdir: /tmp/boxfuse-sample-java-war-hello
+...
