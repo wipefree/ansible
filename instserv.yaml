@@ -35,15 +35,36 @@
         - /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
       register: war
 
-    - name: diplay debug info
+    - name: display debug info
       debug:
         msg:
-          - "pom.xml exists      : => {{[ war.results[0].stat.exists ]}}"
-          - "hello-1.0.war exists: => {{[ war.results[1].stat.exists ]}}"
+          - "pom.xml exists       => {{[ war.results[0].stat.exists ]}}"
+          - "hello-1.0.war exists => {{[ war.results[1].stat.exists ]}}"
 
     - name: building project WAR
       command: ls -la #mvn package -DskipTests
       args:
         chdir: /tmp/boxfuse-sample-java-war-hello
       when: war.results[0].stat.exists and not war.results[1].stat.exists #run build project if hello-1.0.war not exist
+
+    - name: control of result building project as existing file hello-1.0.war
+      stat:
+        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      register: war
+
+    - name: if hello-1.0.war is exists, then copy it => docker registry
+      debug:
+        msg:
+          - "********************************************************************"
+          - "Файл hello-1.0.war скомпилировался, можно копировать его в регистри!"
+          - "********************************************************************"
+      when: war.state.exists
+
+    - name: if hello-1.0.war is NOT exists, display info about this
+      debug:
+        msg:
+          - "------------------------------------"
+          - "(!) Файл проекта не скомпилировался!"
+          - "------------------------------------"
+      when: not war.state.exists
 ...
