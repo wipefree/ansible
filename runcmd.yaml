@@ -1,6 +1,9 @@
 ---
-- hosts: maven
+- name: try run command
+  hosts: maven
   become: yes
+
   tasks:
-    - command: ls -latr
+    - name: run cmd
+      command: ls -latr
 ...
