@@ -16,7 +16,7 @@
 
     - name: run cmd
       command: ls -latr
-#      args:
-#        chdir: /tmp/boxfuse-sample-java-war-hello
+      args:
+        chdir: /tmp/boxfuse-sample-java-war-hello
 #      when: not war.stat.exists # run build project if hello-1.0.war not exist
 ...
