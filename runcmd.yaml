@@ -9,14 +9,14 @@
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
 
-    - name: control of existing hello-1.0.war
-      ansible.builtin.stat:
-        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
-      register: war
+#    - name: control of existing hello-1.0.war
+#      ansible.builtin.stat:
+#        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+#      register: war
 
     - name: run cmd
       command: ls -latr
-      args:
-        chdir: /tmp/boxfuse-sample-java-war-hello
-      when: not war.stat.exists # run build project if hello-1.0.war not exist
+#      args:
+#        chdir: /tmp/boxfuse-sample-java-war-hello
+#      when: not war.stat.exists # run build project if hello-1.0.war not exist
 ...
