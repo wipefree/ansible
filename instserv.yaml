@@ -16,19 +16,25 @@
           - maven
         state: present
 
+    - name: control of existing pom.xml
+      stat:
+        path: /tmp/boxfuse-sample-java-war-hello/pom.xml
+      register: pom
+
     - name: clone project from Git
       git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
+      when: not pom.stat.exists # clone project if pom.xml not exist
 
-#    - name: control of existing hello-1.0.war
-#      ansible.builtin.stat:
-#        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
-#      register: war
-#
-#    - name: building project WAR
-#      ansible.builtin.command: mvn package -DskipTests
-#      args:
-#        chdir: /tmp/boxfuse-sample-java-war-hello
-      #when: not war.stat.exists # run build project if hello-1.0.war not exist
+    - name: control of existing hello-1.0.war
+      stat:
+        path: /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      register: war
+
+    - name: building project WAR
+      command: ls -la #mvn package -DskipTests
+      args:
+        chdir: /tmp/boxfuse-sample-java-war-hello
+      when: not war.stat.exists # run build project if hello-1.0.war not exist
 ...
