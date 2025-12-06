@@ -42,7 +42,7 @@
           - "hello-1.0.war exists => {{[ war.results[1].stat.exists ]}}"
 
     - name: building project WAR
-      command: ls -la #mvn package -DskipTests
+      command: mvn package -DskipTests
       args:
         chdir: /tmp/boxfuse-sample-java-war-hello
       when: war.results[0].stat.exists and not war.results[1].stat.exists #run build project if hello-1.0.war not exist
