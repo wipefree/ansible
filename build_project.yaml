@@ -25,7 +25,7 @@
       git:
         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
         dest: /tmp/boxfuse-sample-java-war-hello
-      when: not prj.stat.exists # clone project if pom.xml not exist
+      when: not prj.stat.exists # clone project if project folder not exist
 
     - name: control of existing hello-1.0.war
       stat:
